@@ -23,7 +23,7 @@ public class PracticeProblem {
 
 		if (row < 0 || row >= rows || col < 0 || col >= cols || arr1[row][col].equals("*")) {
 			return Integer.MAX_VALUE;
-		} 
+		}
 
 		if (arr1[row][col].equals("F")) {
 			return moves;
@@ -33,14 +33,13 @@ public class PracticeProblem {
 		arr1[row][col] = "*";
 
 		int right = searchMazeMovesHelper(arr1, row, col + 1, moves + 1);
-		int up = searchMazeMovesHelper(arr1, row - 1, col, moves + 1);
 		int left = searchMazeMovesHelper(arr1, row, col - 1, moves + 1);
+		int up = searchMazeMovesHelper(arr1, row - 1, col, moves + 1);
 		int down = searchMazeMovesHelper(arr1, row + 1, col, moves + 1);
-
+		
 		arr1[row][col] = temp;
 		
 		int min =  Math.min((Math.min(down, up)), (Math.min(right, left)));
-
 		return min;
 	}
 }
